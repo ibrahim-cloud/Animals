@@ -41,32 +41,30 @@ public class Animal {
 			return "\nName : "+ name +"\nAge : "+ age ;
 		}
 		
-		public void eat() {
-		};
 
-		public void sleep() {
-		};
-
-		public void run() {
-		};
+		public void ReadSound(String chemin,String typesound) throws UnsupportedAudioFileException, IOException, LineUnavailableException{
+			
+			
+			
+			 /*Path AbsolutePath = FileSystems.getDefault().getPath("").toAbsolutePath();*/
+			
+			File file = new File (chemin);
+			
+			AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
 		
-
-		public void ReadSound(String paht,String effectSource) throws UnsupportedAudioFileException, IOException, LineUnavailableException{
-			Path AbsolutePath = FileSystems.getDefault().getPath("").toAbsolutePath();
-			String fullPath = AbsolutePath + paht;
-			AudioInputStream audioIn = AudioSystem.getAudioInputStream(new File(fullPath));
 	           
 	           Clip clip = AudioSystem.getClip();
-	           clip.open(audioIn);
+	           clip.open(audioStream);
 	           clip.start();
-	           System.out.println(effectSource+" sound is start ! ");
-	           System.out.println("s : "+clip.isActive());
+	           
+	           System.out.println("************* le son de " + typesound + " c'est commencer ************ ");
+	           System.out.println("**********  La voix d'un "+ typesound + "   *************");
 	           while(clip.isActive()) {
-	//System.out.println("hola "+effectSource);
-	}
+                                 
+                                 	}
 	           clip.close();
-	           System.out.println(effectSource+" sound is end ! ");
-	}
-}
+	           System.out.println( "************  le son de " + typesound   + " est fini ************* ");
+	                               }
+                                 }
 
 
